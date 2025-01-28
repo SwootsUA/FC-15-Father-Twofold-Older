@@ -43,7 +43,7 @@ function calcYearsUntilTwiceAsOld(fatherAge, sonAge) {
 calcYearsUntilTwiceAsOld(36, 7); // in 22 years 
 calcYearsUntilTwiceAsOld(22, 1); // in 20 years 
 
-calcYearsUntilTwiceAsOld(40, 20); // 4 years ago
+calcYearsUntilTwiceAsOld(40, 20); // 0 years (right now)
 
 calcYearsUntilTwiceAsOld(60, 32); // 4 years ago
 calcYearsUntilTwiceAsOld(70, 40); // 10 years ago
