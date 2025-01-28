@@ -19,7 +19,7 @@ function calcYearsUntilTwiceAsOld(fatherAge, sonAge) {
         return NaN;
     }
 
-    let difference = Math.abs(fatherAge - sonAge);
+    let difference = fatherAge - sonAge;
     if (difference < 15) {
         console.log('Invalid input, age difference is less than 15 years');
         return NaN;
