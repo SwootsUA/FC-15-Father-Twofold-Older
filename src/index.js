@@ -9,25 +9,46 @@
  * @returns {number}
  */
 function calcYearsUntilTwiceAsOld(fatherAge, sonAge) {
-    if(fatherAge < 0 || sonAge < 0 || fatherAge < sonAge) {
+    if (fatherAge < 0 || sonAge < 0) {
+        console.log('Invalid input, age cannot be negative');
+        return NaN;
+    }
+
+    if (fatherAge < sonAge) {
+        console.log('Invalid input, father cannot be younger than son');
         return NaN;
     }
 
     let difference = Math.abs(fatherAge - sonAge);
-    if(difference < 15) {
+    if (difference < 15) {
+        console.log('Invalid input, age difference is less than 15 years');
         return NaN;
     }
 
-    return Math.abs(difference - sonAge);
+    let result = Math.abs(difference - sonAge);
+
+    if (fatherAge > sonAge * 2) {
+        console.log(`Father (${fatherAge}) will be twice as old as son (${sonAge}) in ${result} years`);
+    }
+    if (fatherAge < sonAge * 2) {
+        console.log(`Father (${fatherAge}) was twice as old as son (${sonAge}) ${result} years ago`);
+    }
+    if (fatherAge === sonAge * 2) {
+        console.log(`Father (${fatherAge}) is twice as old as son (${sonAge})`);
+    }
+
+    return result;
 }
 
-console.log(`Father (${36}) will be twice as old as son (${7}) in ${calcYearsUntilTwiceAsOld(36, 7)} years`); // in 22 years 
-console.log(`Father (${22}) will be twice as old as son (${1}) in ${calcYearsUntilTwiceAsOld(22, 1)} years`); // in 20 years 
+calcYearsUntilTwiceAsOld(36, 7); // in 22 years 
+calcYearsUntilTwiceAsOld(22, 1); // in 20 years 
 
-console.log(`Father (${60}) was twice as old as son (${32}) ${calcYearsUntilTwiceAsOld(60, 32)} years ago`); // 4 years ago
-console.log(`Father (${70}) was twice as old as son (${40}) ${calcYearsUntilTwiceAsOld(70, 40)} years ago`); // 10 years ago
+calcYearsUntilTwiceAsOld(40, 20); // 4 years ago
 
-console.log(`Invalid input (${-30}, ${15}): ${calcYearsUntilTwiceAsOld(-30, 15)}`); // Invalid input, returns NaN
-console.log(`Invalid input (${30}, ${-15}): ${calcYearsUntilTwiceAsOld(30, -15)}`); // Invalid input, returns NaN
-console.log(`Invalid input (${20}, ${10}), difference is less than 15 years: ${calcYearsUntilTwiceAsOld(20, 10)}`); // difference is less than 15 years, returns NaN
-console.log(`Invalid input (${20}, ${40}), father is younger than son: ${calcYearsUntilTwiceAsOld(20, 40)}`); // father is younger than son, returns NaN
+calcYearsUntilTwiceAsOld(60, 32); // 4 years ago
+calcYearsUntilTwiceAsOld(70, 40); // 10 years ago
+
+calcYearsUntilTwiceAsOld(-30, 15); // Invalid input, returns NaN
+calcYearsUntilTwiceAsOld(30, -15); // Invalid input, returns NaN
+calcYearsUntilTwiceAsOld(20, 10); // difference is less than 15 years, returns NaN
+calcYearsUntilTwiceAsOld(20, 40); // father is younger than son, returns NaN
