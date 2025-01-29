@@ -1,4 +1,3 @@
-
 'use strict';
 
 /**
@@ -19,31 +18,26 @@ function calcYearsUntilTwiceAsOld(fatherAge, sonAge) {
         console.log('Invalid input, age difference is less than 15 years and father cannot be younger than son');
         return NaN;
     }
-
-    let result = Math.abs(difference - sonAge);
-
-    if (fatherAge > sonAge * 2) {
-        console.log(`Father (${fatherAge}) will be twice as old as son (${sonAge}) in ${result} years`);
-    }
-    if (fatherAge < sonAge * 2) {
-        console.log(`Father (${fatherAge}) was twice as old as son (${sonAge}) ${result} years ago`);
-    }
-    if (fatherAge === sonAge * 2) {
-        console.log(`Father (${fatherAge}) is twice as old as son (${sonAge})`);
-    }
-
-    return result;
+    
+    return Math.abs(difference - sonAge);
 }
 
-calcYearsUntilTwiceAsOld(36, 7); // in 22 years 
-calcYearsUntilTwiceAsOld(22, 1); // in 20 years 
+// Test cases
+let testFatherAges = [36, 22, 40, 60, 70, -30, 30, 20, 20];
+let testSonAges = [7, 1, 20, 32, 40, 15, -15, 10, 40];
 
-calcYearsUntilTwiceAsOld(40, 20); // 0 years (right now)
+for (let i = 0; i < testFatherAges.length; i++) {
+    let years = calcYearsUntilTwiceAsOld(testFatherAges[i], testSonAges[i]);
 
-calcYearsUntilTwiceAsOld(60, 32); // 4 years ago
-calcYearsUntilTwiceAsOld(70, 40); // 10 years ago
+    if (Number.isNaN(years)) {
+        continue;
+    }
 
-calcYearsUntilTwiceAsOld(-30, 15); // Invalid input, returns NaN
-calcYearsUntilTwiceAsOld(30, -15); // Invalid input, returns NaN
-calcYearsUntilTwiceAsOld(20, 10); // difference is less than 15 years, returns NaN
-calcYearsUntilTwiceAsOld(20, 40); // father is younger than son, returns NaN
+    if (years === 0) {
+        console.log(`Father (${testFatherAges[i]}) is twice as old as son (${testSonAges[i]})`);
+    } else if (testFatherAges[i] > testSonAges[i] * 2) {
+        console.log(`Father (${testFatherAges[i]}) will be twice as old as son (${testSonAges[i]}) in ${years} years`);
+    } else if (testFatherAges[i] < testSonAges[i] * 2) {
+        console.log(`Father (${testFatherAges[i]}) was twice as old as son (${testSonAges[i]}) ${years} years ago`);
+    }
+}
